@@ -14,8 +14,8 @@ while True:
         continue
     random_number = random.randrange(10)
     if random_number < 9:
-        print(int(time.time()), f"rand = {random_number}", REGULAR_MESSAGE)
+        print(int(time.time()), f"rand = {random_number}", REGULAR_MESSAGE, flush=True)
     else:
-        print(int(time.time()), f"rand = {random_number}", ERROR_MESSAGE)
+        print(int(time.time()), f"rand = {random_number}", ERROR_MESSAGE, flush=True)
         error_printed = True
 
