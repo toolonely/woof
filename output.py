@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+"""test script that mimics the behavior of gnirehtet"""
+
 import time
 import random
 
