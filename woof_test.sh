@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# test wrapper that works with the test script
+
 while true; do
     echo "(re)starting ./output.py"
     ./output.py | {
