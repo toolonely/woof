@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# wrapper for gnirehtet
+# - runs gnirehtet in a loop
+# - when a client disconnects, gnirehtet prints a log message, but keeps
+#   working. the only way to fix it is to manually restart gnirehtet on the
+#   desktop
+# - the wrapper detects the disconnect log message of gnirehtet and kills it,
+#   so the loop restarts gnirehtet again
+# - after gnirehtet restarts, the phone connects again automatically, and
+#   the reverse tethering is restored
+
 while true; do
     echo "(re)starting ./gnirehtet"
     ./gnirehtet autorun | {
