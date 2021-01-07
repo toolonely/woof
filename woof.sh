@@ -9,6 +9,7 @@ while true; do
             if [[ "$line" =~ "disconnected" ]]; then
                 kill $(pgrep -f gnirehtet)
                 echo "./gnirehtet killed"
+                sleep 1
             fi
         done
     }
