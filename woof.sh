@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # wrapper for gnirehtet
+# has to be in the same directory with gnirehtet, since it is called as ./
 # - runs gnirehtet in a loop
 # - when a client disconnects, gnirehtet prints a log message, but keeps
 #   working. the only way to fix it is to manually restart gnirehtet on the
