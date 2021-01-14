@@ -13,14 +13,31 @@
       the reverse tethering is restored
 """
 
+import os
 import subprocess
+import sys
 import time
+
+with open(os.devnull, "w") as devnull:
+    child = subprocess.Popen(["which", "gnirehtet"], stdout=devnull, stderr=devnull)
+    child.communicate()
+    ret = child.returncode
+    if ret != 0:
+        os.environ["PATH"] = "{}:.".format(os.environ["PATH"])
+    child = subprocess.Popen(["which", "gnirehtet"], stdout=devnull, stderr=devnull)
+    child.communicate()
+    ret = child.returncode
+    if ret != 0:
+        print("gnirehtet not found")
+        print("either install it through a package for your OS")
+        print("or download the Rust binary release from GitHub")
+        sys.exit(-1)
 
 def main():
     """main"""
     while True:
-        print("(re)starting ./gnirehtet")
-        proc = subprocess.Popen(["./gnirehtet", "autorun"], stdout=subprocess.PIPE)
+        print("(re)starting gnirehtet")
+        proc = subprocess.Popen(["gnirehtet", "autorun"], stdout=subprocess.PIPE)
         while True:
             line = proc.stdout.readline().decode("utf-8").strip()
             print(line)
@@ -30,7 +47,7 @@ def main():
                 pid = subprocess.check_output(["pgrep", "-f", "gnirehtet"]).decode("utf-8").strip()
 
                 subprocess.Popen(["kill", pid])
-                print("./gnirehtet.py killed")
+                print("gnirehtet killed")
                 time.sleep(1)
 
 
